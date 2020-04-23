@@ -11,6 +11,7 @@ import (
 
 var cfgFile string
 var input string
+var name string
 
 var cmd = &cobra.Command{
 	Use:   "cmd2yaml",
@@ -23,7 +24,7 @@ var cmd = &cobra.Command{
 			cmd.Help()
 			return
 		}
-		pkg.Cmd2yaml(input)
+		pkg.Show(input, name)
 	},
 }
 
@@ -43,7 +44,7 @@ func init() {
 	// when this action is called directly.
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	cmd.Flags().StringVarP(&input, "input", "i", "", "input docker command ")
-	cmd.Flags().StringVarP(&input, "filepath", "f", "", "the file include input docker command ")
+	cmd.Flags().StringVarP(&name, "name", "n", "", "the pod metadata name")
 }
 
 func initConfig() {
