@@ -26,6 +26,7 @@ metadata:
   labels:
     name: test
 spec:
+  hostNetwork: true
   containers:
   - name: your-container
     image: your-container
@@ -34,6 +35,9 @@ spec:
     - -c
     args:
     - python test.py
+    ports:
+    - hostPort: 12345
+      containerPort: 12345
     volumeMounts:
     - name: ssh
       mountPath: /tmp
