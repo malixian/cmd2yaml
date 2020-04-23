@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"cmd2yaml/impl"
 	"fmt"
+	"cmd2yaml/pkg"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
@@ -23,7 +23,7 @@ var cmd = &cobra.Command{
 			cmd.Help()
 			return
 		}
-		impl.Show(input)
+		pkg.Cmd2yaml(input)
 	},
 }
 
@@ -43,6 +43,7 @@ func init() {
 	// when this action is called directly.
 	//rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	cmd.Flags().StringVarP(&input, "input", "i", "", "input docker command ")
+	cmd.Flags().StringVarP(&input, "filepath", "f", "", "the file include input docker command ")
 }
 
 func initConfig() {
